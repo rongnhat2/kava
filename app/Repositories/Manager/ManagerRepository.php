@@ -23,6 +23,6 @@ class ManagerRepository extends BaseRepository
     }
     public function get_transaction()
     {
-        return DB::table('transaction')->get();
+        return DB::table('transaction')->orderBy('created_at', 'desc')->get();
     }
 }
