@@ -25,4 +25,8 @@ class DisplayController extends Controller
     {
         return view('admin.manager.transaction.index');
     }
+    public function statistic()
+    {
+        return view('admin.manager.statistic.index');
+    }
 }

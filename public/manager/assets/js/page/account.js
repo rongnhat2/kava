@@ -6,7 +6,7 @@ const View = {
                 `<div class="id-order">${data.id}</div>`,
                 `${data.public_key}`,
                 `${data.balance}`,
-                `<a href="https://testnet.kavascan.io/tx/${data.transaction_hash}" target="_blank" class="view-data" style="cursor: pointer" ><i class="anticon anticon-eye"></i></a>`,
+                `<a href="https://testnet.kavascan.io/address/${data.public_key}" target="_blank" class="view-data" style="cursor: pointer" ><i class="anticon anticon-eye"></i></a>`,
             ];
         },
         init() {
@@ -357,4 +357,7 @@ const View = {
             timeoutID = setTimeout(function () {
                 isLock = false;
             }, timeout);
-       
+        };
+    }
+    init();
+})();
