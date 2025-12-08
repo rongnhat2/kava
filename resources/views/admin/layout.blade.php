@@ -115,6 +115,7 @@
     <script src="{{ asset('manager/assets/js/lazy-load/jquery.lazy.plugins.min.js') }}"></script>
 
     <script src="{{ asset('manager/assets/js/summernote/summernote-lite.min.js') }}"></script>
+    <script src="{{ asset('manager/assets/vendors/chartjs/Chart.min.js') }}"></script>
 
     <script src="{{ asset('manager/assets/vendors/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('manager/assets/vendors/datatables/dataTables.bootstrap.min.js') }}"></script>

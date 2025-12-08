@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DisplayController extends Controller
 {
@@ -27,6 +28,10 @@ class DisplayController extends Controller
     }
     public function statistic()
     {
-        return view('admin.manager.statistic.index');
+        $profit = DB::table('transaction')->sum('amount');
+        $transactions = DB::table('transaction')->count();
+        $transaction_data = DB::table('transaction')->get();
+        $accounts = DB::table('account')->count();
+        return view('admin.manager.statistic.index', compact('profit', 'transactions', 'accounts', 'transaction_data'));
     }
 }
