@@ -19,7 +19,7 @@
                         <i class="anticon anticon-dollar"></i>
                     </div>
                     <div class="m-l-15">
-                        <h2 class="m-b-0">${{ $profit }}</h2>
+                        <h2 class="m-b-0">Kava {{ $profit }}</h2>
                         <p class="m-b-0 text-muted">Volumn Boost</p>
                     </div>
                 </div>
