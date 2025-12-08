@@ -7,6 +7,7 @@ const View = {
                 `${data.account_id}`,
                 `${data.amount}`,
                 `${data.type}`,
+                `${data.created_at}`,
                 `<a href="https://testnet.kavascan.io/tx/${data.transaction_hash}" target="_blank" class="view-data" style="cursor: pointer" ><i class="anticon anticon-eye"></i></a> `,
             ];
         },
@@ -30,6 +31,11 @@ const View = {
                 },
                 {
                     title: "Action",
+                    name: "sold_count",
+                    orderable: true,
+                },
+                {
+                    title: "Date ",
                     name: "sold_count",
                     orderable: true,
                 },
