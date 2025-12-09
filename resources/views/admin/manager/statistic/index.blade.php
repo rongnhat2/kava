@@ -87,51 +87,54 @@
 
 
 <script>
-    // Chart by hour, process data via #transaction-list
+    // Chart by date time, process data via #transaction-list
     const transactionList = JSON.parse(document.getElementById('transaction-list').value);
 
-    // Assuming transactionList is an array of objects with a "created_at" or "hour" property,
-    // and we want to count the number of transactions per hour in a 24h period.
+    // Lấy dữ liệu thống kê theo ngày giờ (ví dụ: mỗi cặp [yyyy-mm-dd HH])
+    // Đếm số giao dịch cho từng ngày giờ riêng biệt
+    const dateHourMap = {};
 
-    // Prepare an array of hour labels ("00", "01", ..., "23")
-    const hours = Array.from({
-        length: 24
-    }, (_, i) => i.toString().padStart(2, '0'));
-
-    // Initialize transaction count for each hour
-    const hourlyTransactionCounts = Array(24).fill(0);
-
-    // Assume each transaction has a 'created_at' datetime (e.g., "2024-06-02 14:23:00")
     transactionList.forEach(tx => {
-        let hour = null;
-
-        // Try parsing hour from 'created_at' if present
+        let dateHourLabel = null;
         if (tx.created_at) {
-            // Extract hour part, assuming format "YYYY-MM-DD HH:mm:ss"
-            hour = new Date(tx.created_at).getHours();
-        } else if (tx.hour !== undefined) {
-            // Or take the hour directly if provided
-            hour = typeof tx.hour === 'string' ? parseInt(tx.hour, 10) : tx.hour;
+            // lấy riêng phần ngày + phần giờ ("2024-06-02 14:23:00" -> "2024-06-02 14")
+            const d = new Date(tx.created_at);
+            if (!isNaN(d.getTime())) {
+                const yyyy = d.getFullYear();
+                const mm = (d.getMonth() + 1).toString().padStart(2, '0');
+                const dd = d.getDate().toString().padStart(2, '0');
+                const hh = d.getHours().toString().padStart(2, '0');
+                dateHourLabel = `${yyyy}-${mm}-${dd} ${hh}:00`;
+            }
+        } else if (tx.date && tx.hour !== undefined) {
+            // fallback nếu dữ liệu đã tách ngày và giờ
+            let hh = typeof tx.hour === 'string' ? tx.hour.padStart(2, '0') : tx.hour.toString().padStart(2, '0');
+            dateHourLabel = `${tx.date} ${hh}:00`;
         }
-
-        if (hour !== null && hour >= 0 && hour < 24) {
-            hourlyTransactionCounts[hour]++;
+        if (dateHourLabel) {
+            dateHourMap[dateHourLabel] = (dateHourMap[dateHourLabel] || 0) + 1;
         }
     });
+
+    // Sắp xếp các nhãn theo thứ tự thời gian tăng dần
+    const sortedLabels = Object.keys(dateHourMap).sort();
+
+    // Dữ liệu count theo nhãn
+    const counts = sortedLabels.map(label => dateHourMap[label]);
 
     const revenueChartConfig = new Chart(document.getElementById("revenue-chart").getContext('2d'), {
         type: 'line',
         data: {
-            labels: hours,
+            labels: sortedLabels,
             datasets: [{
-                label: 'Transactions per hour',
+                label: 'Số giao dịch theo ngày giờ',
                 backgroundColor: "transparent",
                 borderColor: "blue",
                 pointBackgroundColor: "blue",
                 pointBorderColor: "white",
                 pointHoverBackgroundColor: "blue",
                 pointHoverBorderColor: "blue",
-                data: hourlyTransactionCounts
+                data: counts
             }]
         },
         options: {
@@ -149,15 +152,20 @@
             },
             scales: {
                 xAxes: [{
+                    type: 'category',
                     ticks: {
                         display: true,
                         fontColor: "gray",
                         fontSize: 13,
                         padding: 10,
-                        maxRotation: 90,
+                        maxRotation: 80,
                         minRotation: 45,
                         autoSkip: true,
-                        maxTicksLimit: 12
+                        maxTicksLimit: 20,
+                        callback: function(value) {
+                            // rút gọn nhãn nếu cần
+                            return value.length > 16 ? value.substring(5) : value;
+                        }
                     },
                     gridLines: {
                         display: false,
