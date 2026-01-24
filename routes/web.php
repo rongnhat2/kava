@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Admin\DisplayController@index')->name('customer.index');
+Route::get('/', 'Admin\DisplayController@statistic')->name('customer.index');
 Route::get('/transaction', 'Admin\DisplayController@transaction')->name('customer.transaction');
 Route::get('/statistic', 'Admin\DisplayController@statistic')->name('customer.statistic');
