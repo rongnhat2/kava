@@ -5,31 +5,35 @@
 
     <!-- begin::NexLink Meta Basic -->
     <meta charset="utf-8">
-    <meta name="theme-color" content="#5955D1">
+    <meta name="theme-color" content="#4B5563">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="LayoutDrop">
+    <meta name="author" content="Kava Team">
     <meta name="format-detection" content="telephone=no">
-    <meta name="keywords" content="Bootstrap Admin Template, CRM Dashboard, Admin Panel, Bootstrap 5 Dashboard, Project Management, Analytics Template, Responsive Admin">
-    <meta name="description" content="NexLink is a modern Bootstrap 5 CRM Admin Dashboard Template designed for managing sales, analytics, projects, and team performance with clean UI, responsive layout, and prebuilt pages.">
-    <!-- end::NexLink Meta Basic -->
+    <meta name="keywords"
+        content="Kava, Kava Admin, Kava Dashboard, Kava Platform, Blockchain Admin, Crypto Dashboard, Admin Template">
+    <meta name="description"
+        content="Kava is a modern blockchain admin dashboard designed to manage and analyze blockchain-based projects, Kava platform data, and team performance with a seamless user experience and responsive layout.">
+    <!-- end::Kava Meta Basic -->
 
-    <!-- begin::NexLink Meta Social -->
-    <meta property="og:url" content="https://nexlink.layoutdrop.com/demo/">
-    <meta property="og:site_name" content="NexLink | CRM Admin Dashboard Template">
+    <!-- begin::Kava Meta Social -->
+    <meta property="og:url" content="https://kava.example.com/">
+    <meta property="og:site_name" content="Kava | Blockchain Admin Dashboard">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
-    <meta property="og:title" content="NexLink | CRM Admin Dashboard Template">
-    <meta property="og:description" content="NexLink is a modern Bootstrap 5 CRM Admin Dashboard Template designed for managing sales, analytics, projects, and team performance with clean UI, responsive layout, and prebuilt pages.">
-    <meta property="og:image" content="https://nexlink.layoutdrop.com/demo/preview.png">
-    <!-- end::NexLink Meta Social -->
+    <meta property="og:title" content="Kava | Blockchain Admin Dashboard">
+    <meta property="og:description"
+        content="Kava is a blockchain admin dashboard for managing, monitoring, and analyzing blockchain activities and project performance with an intuitive interface.">
+    <meta property="og:image" content="https://kava.example.com/preview.png">
+    <!-- end::Kava Meta Social -->
 
-    <!-- begin::NexLink Meta Twitter -->
+    <!-- begin::Kava Meta Twitter -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://nexlink.layoutdrop.com/demo/">
-    <meta name="twitter:creator" content="@layoutdrop">
-    <meta name="twitter:title" content="NexLink | CRM Admin Dashboard Template">
-    <meta name="twitter:description" content="NexLink is a modern Bootstrap 5 CRM Admin Dashboard Template designed for managing sales, analytics, projects, and team performance with clean UI, responsive layout, and prebuilt pages.">
-    <!-- end::NexLink Meta Twitter -->
+    <meta name="twitter:url" content="https://kava.example.com/">
+    <meta name="twitter:creator" content="@kavateam">
+    <meta name="twitter:title" content="Kava | Blockchain Admin Dashboard">
+    <meta name="twitter:description"
+        content="Kava is an intuitive platform for managing and analyzing your blockchain and crypto projects in a unified and responsive admin dashboard.">
+    <!-- end::Kava Meta Twitter -->
 
     <!-- begin::NexLink Website Page Title -->
     <title>NexLink | CRM Admin Dashboard Template</title>
@@ -47,7 +51,8 @@
     <!-- begin::NexLink Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <!-- end::NexLink Google Fonts -->
 
     <!-- begin::NexLink Required Stylesheet -->
@@ -78,7 +83,8 @@
 
                 <div class="vr my-3"></div>
                 <div class="dropdown text-end ms-sm-3 ms-2 ms-lg-4">
-                    <a href="#" class="d-flex align-items-center py-2" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="true">
+                    <a href="#" class="d-flex align-items-center py-2" data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside" aria-expanded="true">
                         <div class="text-end me-2 d-none d-lg-inline-block">
                             <div class="fw-bold text-dark">Robert Brown</div>
                             <small class="text-body d-block lh-sm">
@@ -126,7 +132,8 @@
                             <div class="dropdown-divider my-1"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="authentication/login-basic.html">
+                            <a class="dropdown-item d-flex align-items-center gap-2 text-danger"
+                                href="authentication/login-basic.html">
                                 <i class="fi fi-sr-exit scale-1x"></i> Log Out
                             </a>
                         </li>
