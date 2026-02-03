@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Admin\DisplayController@statistic')->name('customer.index');
 Route::get('/transaction', 'Admin\DisplayController@transaction')->name('customer.transaction');
+Route::get('/bot', 'Admin\DisplayController@bot')->name('customer.bot');
 Route::get('/statistic', 'Admin\DisplayController@statistic')->name('customer.statistic');

@@ -26,12 +26,16 @@ class DisplayController extends Controller
     {
         return view('admin.manager.transaction.index');
     }
+    public function bot()
+    {
+        return view('admin.manager.bot.index');
+    }
     public function statistic()
     {
         $profit_buy = DB::table('transaction')->where("type", "Swap USDT to KAVA")->sum('amount');
         $profit_sell = DB::table('transaction')->where("type", "Swap KAVA to USDT")->sum('amount');
-        $transactions = DB::table('transaction')->count();
-        $transaction_data = DB::table('transaction')->get();
+        $transactions = DB::table('transaction')->where('type', 'like', '%swap%')->count();
+        $transaction_data = DB::table('transaction')->where('type', 'like', '%swap%')->get();
         // Lấy thời gian đầu ngày và cuối ngày hôm nay
         $todayStart = now()->startOfDay();
         $todayEnd = now()->endOfDay();
@@ -90,10 +94,11 @@ class DisplayController extends Controller
         // Lấy tất cả transaction "trong ngày" chia theo giờ, tránh nhiều truy vấn
         $allTransactions = DB::table('transaction')
             ->whereBetween('created_at', [$todayStart, $todayEnd])
+            ->where('type', 'like', '%swap%')
             ->get();
 
         foreach ($allTransactions as $tx) {
-            $hour = (int)date('G', strtotime($tx->created_at));
+            $hour = (int) date('G', strtotime($tx->created_at));
             // Tìm index mốc giờ đúng cho $tx
             foreach ($timeWindows as $idx => $window) {
                 if (
@@ -139,6 +144,7 @@ class DisplayController extends Controller
                 DB::raw('SUM(amount) as total_volume')
             )
             ->whereBetween('created_at', [$todayStart, $todayEnd])
+            ->where('type', 'like', '%swap%')
             ->groupBy('account_id')
             ->orderByDesc('transactions_count')
             ->limit(4)
@@ -147,6 +153,7 @@ class DisplayController extends Controller
 
         // Lấy ra 30 transaction gần nhất
         $latestTransactions = DB::table('transaction')
+            ->where('type', 'like', '%swap%')
             ->orderByDesc('created_at')
             ->limit(30)
             ->get();

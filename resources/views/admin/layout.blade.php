@@ -159,7 +159,7 @@
                                     <span class="menu-label">Dashboard</span>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-link" href="sales.html" role="button">
+                                    <a class="menu-link" href="{{ route('customer.statistic') }}" role="button">
                                         <i class="fi fi-rr-percent-100"></i>
                                         <span class="menu-label">Sales Dashboard</span>
                                     </a>
@@ -169,13 +169,13 @@
                                         <i class="fi fi-rr-growth-chart-invest"></i>
                                         <span class="menu-label">Finance Dashboard</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="menu-item">
-                                    <a class="menu-link" href="team-management.html" role="button">
+                                    <a class="menu-link" href="{{ route('customer.bot') }}" role="button">
                                         <i class="fi fi-rr-circle-user"></i>
                                         <span class="menu-label">BOT Management</span>
                                     </a>
-                                </li> -->
+                                </li>
                             </ul>
                         </nav>
                     </div>
