@@ -36,7 +36,7 @@
     <!-- end::Kava Meta Twitter -->
 
     <!-- begin::NexLink Website Page Title -->
-    <title>NexLink | CRM Admin Dashboard Template</title>
+    <title>KavaSwap | CRM Admin Dashboard Template</title>
     <!-- end::NexLink Website Page Title -->
 
     <!-- begin::NexLink Mobile Specific -->
