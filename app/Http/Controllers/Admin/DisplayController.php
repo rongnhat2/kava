@@ -36,6 +36,7 @@ class DisplayController extends Controller
         $profit_sell = DB::table('transaction')->where("type", "Swap KAVA to USDT")->sum('amount');
         $transactions = DB::table('transaction')->where('type', 'like', '%swap%')->count();
         $transaction_data = DB::table('transaction')->where('type', 'like', '%swap%')->get();
+
         // Lấy thời gian đầu ngày và cuối ngày hôm nay
         $todayStart = now()->startOfDay();
         $todayEnd = now()->endOfDay();
@@ -117,7 +118,8 @@ class DisplayController extends Controller
         }
 
         // Tổng profit chỉ lấy trong ngày hôm nay cho khớp số liệu biểu đồ
-        $profit = $allTransactions->sum('amount');
+        // $profit = $allTransactions->sum('amount');
+        $profit = $profit_buy + $profit_sell;
 
         $buyCounts = $buySums;
         $sellCounts = $sellSums;
