@@ -170,12 +170,12 @@
                                         <span class="menu-label">Finance Dashboard</span>
                                     </a>
                                 </li> -->
-                                <li class="menu-item">
+                                <!-- <li class="menu-item">
                                     <a class="menu-link" href="{{ route('customer.bot') }}" role="button">
                                         <i class="fi fi-rr-circle-user"></i>
                                         <span class="menu-label">BOT Management</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </nav>
                     </div>
