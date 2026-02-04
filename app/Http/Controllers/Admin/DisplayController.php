@@ -37,23 +37,24 @@ class DisplayController extends Controller
         $transactions = DB::table('transaction')->where('type', 'like', '%swap%')->count();
         $transaction_data = DB::table('transaction')->where('type', 'like', '%swap%')->get();
 
-        // Lấy thời gian đầu ngày và cuối ngày hôm nay
-        $todayStart = now()->startOfDay();
-        $todayEnd = now()->endOfDay();
+        // Lấy mốc thời gian cuối là thời điểm hiện tại, mốc đầu là 24h trước
+        $todayEnd = now();
+        $todayStart = now()->subDay();
+
 
         // Các mốc giờ cho biểu đồ và mapping sang giá trị giờ trong ngày
         $hourLabels = [
-            '2 AM',
+            // '2 AM',
             '4 AM',
-            '6 AM',
+            // '6 AM',
             '8 AM',
-            '10 AM',
+            // '10 AM',
             '12 PM',
-            '2 PM',
+            // '2 PM',
             '4 PM',
-            '6 PM',
+            // '6 PM',
             '8 PM',
-            '10 PM',
+            // '10 PM',
             '12 AM'
         ];
         $hourMap = [

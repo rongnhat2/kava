@@ -90,15 +90,15 @@
                                 </button>
                             </li>
                             <!-- <li class="nav-item" role="presentation">
-                                                <button class="nav-link rounded-5" id="weekRevenueTab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" tabindex="-1">
-                                                    Week
-                                                </button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link  rounded-5" id="monthRevenueTab" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">
-                                                    Month
-                                                </button>
-                                            </li> -->
+                                                    <button class="nav-link rounded-5" id="weekRevenueTab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" tabindex="-1">
+                                                        Week
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link  rounded-5" id="monthRevenueTab" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">
+                                                        Month
+                                                    </button>
+                                                </li> -->
                         </ul>
                     </div>
                     <div class="card-body pb-0">
@@ -282,25 +282,25 @@
                                 </div>
                             </div>
                             <!-- <div class="row mt-2 justify-content-between">
-                                                <div class="d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto">
-                                                    <div class="dt-info" aria-live="polite" id="dt_RecentTransactions_info" role="status">Showing 1 to 5 of 5 transactions</div>
-                                                </div>
-                                                <div class="d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto">
-                                                    <div class="dt-paging">
-                                                        <nav aria-label="pagination">
-                                                            <ul class="pagination">
-                                                                <li class="dt-paging-button page-item disabled"><button class="page-link first" role="link" type="button" aria-controls="dt_RecentTransactions" aria-disabled="true" aria-label="First" data-dt-idx="first" tabindex="-1"><i class="fi fi-rr-angle-double-left"></i></button></li>
-                                                                <li class="dt-paging-button page-item disabled"><button class="page-link previous" role="link" type="button" aria-controls="dt_RecentTransactions" aria-disabled="true" aria-label="Previous" data-dt-idx="previous" tabindex="-1"><i class="fi fi-rr-angle-left"></i></button></li>
-                                                                <li class="dt-paging-button page-item active"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" aria-current="page" data-dt-idx="0">1</button></li>
-                                                                <li class="dt-paging-button page-item disabled"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" data-dt-idx="1" disabled>2</button></li>
-                                                                <li class="dt-paging-button page-item disabled"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" data-dt-idx="2" disabled>3</button></li>
-                                                                <li class="dt-paging-button page-item disabled"><button class="page-link next" role="link" type="button" aria-controls="dt_RecentTransactions" aria-label="Next" data-dt-idx="next" disabled><i class="fi fi-rr-angle-right"></i></button></li>
-                                                                <li class="dt-paging-button page-item disabled"><button class="page-link last" role="link" type="button" aria-controls="dt_RecentTransactions" aria-label="Last" data-dt-idx="last" disabled><i class="fi fi-rr-angle-double-right"></i></button></li>
-                                                            </ul>
-                                                        </nav>
+                                                    <div class="d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto">
+                                                        <div class="dt-info" aria-live="polite" id="dt_RecentTransactions_info" role="status">Showing 1 to 5 of 5 transactions</div>
                                                     </div>
-                                                </div>
-                                            </div> -->
+                                                    <div class="d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto">
+                                                        <div class="dt-paging">
+                                                            <nav aria-label="pagination">
+                                                                <ul class="pagination">
+                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link first" role="link" type="button" aria-controls="dt_RecentTransactions" aria-disabled="true" aria-label="First" data-dt-idx="first" tabindex="-1"><i class="fi fi-rr-angle-double-left"></i></button></li>
+                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link previous" role="link" type="button" aria-controls="dt_RecentTransactions" aria-disabled="true" aria-label="Previous" data-dt-idx="previous" tabindex="-1"><i class="fi fi-rr-angle-left"></i></button></li>
+                                                                    <li class="dt-paging-button page-item active"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" aria-current="page" data-dt-idx="0">1</button></li>
+                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" data-dt-idx="1" disabled>2</button></li>
+                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" data-dt-idx="2" disabled>3</button></li>
+                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link next" role="link" type="button" aria-controls="dt_RecentTransactions" aria-label="Next" data-dt-idx="next" disabled><i class="fi fi-rr-angle-right"></i></button></li>
+                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link last" role="link" type="button" aria-controls="dt_RecentTransactions" aria-label="Last" data-dt-idx="last" disabled><i class="fi fi-rr-angle-double-right"></i></button></li>
+                                                                </ul>
+                                                            </nav>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
                             <div style="width: 100%; height: 0px;" class="dt-autosize"></div>
                         </div>
                     </div>
@@ -463,7 +463,7 @@
                     inverseColors: false,
                     opacityFrom: 0.08,
                     opacityTo: 0.01,
-                    stops: [20, 1000]
+                    stops: [20, 500]
                 },
                 gradient: {
                     shade: 'light',
@@ -473,7 +473,7 @@
                     inverseColors: false,
                     opacityFrom: 0.1,
                     opacityTo: 0.01,
-                    stops: [20, 1000]
+                    stops: [20, 500]
                 }
             },
             dataLabels: {
@@ -495,7 +495,7 @@
             },
             yaxis: {
                 min: 0,
-                max: 1000,
+                max: 500,
                 tickAmount: 5,
                 labels: {
                     formatter: function (value) {
