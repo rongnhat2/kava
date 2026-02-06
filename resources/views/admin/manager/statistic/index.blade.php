@@ -38,7 +38,7 @@
                     <div class="card-body d-flex align-items-end">
                         <div class="clearfix me-auto">
                             <p class="mb-1">Total Volume</p>
-                            <h2 class="mb-0">${{ $profit }}</h2>
+                            <h2 class="mb-0">${{ number_format($profit, 2, '.', ',') }}</h2>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="card-body d-flex align-items-end">
                         <div class="clearfix me-auto">
                             <p class="mb-1">Total Transactions</p>
-                            <h2 class="mb-0">{{ number_format($transactions, 0, ',', '.') }}</h2>
+                            <h2 class="mb-0">{{ $transactions }}</h2>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <div class="card-body d-flex align-items-end">
                         <div class="clearfix me-auto">
                             <p class="mb-1">Total Bot</p>
-                            <h2 class="mb-0">{{ number_format($accounts, 0, ',', '.') }}</h2>
+                            <h2 class="mb-0">{{ $accounts }}</h2>
                         </div>
                     </div>
                 </div>
@@ -89,16 +89,18 @@
                                     Today
                                 </button>
                             </li>
-                            <!-- <li class="nav-item" role="presentation">
-                                                    <button class="nav-link rounded-5" id="weekRevenueTab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" tabindex="-1">
-                                                        Week
-                                                    </button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button class="nav-link  rounded-5" id="monthRevenueTab" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">
-                                                        Month
-                                                    </button>
-                                                </li> -->
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link rounded-5" id="weekRevenueTab" data-bs-toggle="tab" type="button"
+                                    role="tab" aria-selected="false" tabindex="-1">
+                                    Week
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link  rounded-5" id="monthRevenueTab" data-bs-toggle="tab" type="button"
+                                    role="tab" aria-selected="true">
+                                    Month
+                                </button>
+                            </li>
                         </ul>
                     </div>
                     <div class="card-body pb-0">
@@ -282,25 +284,25 @@
                                 </div>
                             </div>
                             <!-- <div class="row mt-2 justify-content-between">
-                                                    <div class="d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto">
-                                                        <div class="dt-info" aria-live="polite" id="dt_RecentTransactions_info" role="status">Showing 1 to 5 of 5 transactions</div>
-                                                    </div>
-                                                    <div class="d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto">
-                                                        <div class="dt-paging">
-                                                            <nav aria-label="pagination">
-                                                                <ul class="pagination">
-                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link first" role="link" type="button" aria-controls="dt_RecentTransactions" aria-disabled="true" aria-label="First" data-dt-idx="first" tabindex="-1"><i class="fi fi-rr-angle-double-left"></i></button></li>
-                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link previous" role="link" type="button" aria-controls="dt_RecentTransactions" aria-disabled="true" aria-label="Previous" data-dt-idx="previous" tabindex="-1"><i class="fi fi-rr-angle-left"></i></button></li>
-                                                                    <li class="dt-paging-button page-item active"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" aria-current="page" data-dt-idx="0">1</button></li>
-                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" data-dt-idx="1" disabled>2</button></li>
-                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" data-dt-idx="2" disabled>3</button></li>
-                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link next" role="link" type="button" aria-controls="dt_RecentTransactions" aria-label="Next" data-dt-idx="next" disabled><i class="fi fi-rr-angle-right"></i></button></li>
-                                                                    <li class="dt-paging-button page-item disabled"><button class="page-link last" role="link" type="button" aria-controls="dt_RecentTransactions" aria-label="Last" data-dt-idx="last" disabled><i class="fi fi-rr-angle-double-right"></i></button></li>
-                                                                </ul>
-                                                            </nav>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+                                                                            <div class="d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto">
+                                                                                <div class="dt-info" aria-live="polite" id="dt_RecentTransactions_info" role="status">Showing 1 to 5 of 5 transactions</div>
+                                                                            </div>
+                                                                            <div class="d-md-flex justify-content-between align-items-center dt-layout-end col-md-auto ms-auto">
+                                                                                <div class="dt-paging">
+                                                                                    <nav aria-label="pagination">
+                                                                                        <ul class="pagination">
+                                                                                            <li class="dt-paging-button page-item disabled"><button class="page-link first" role="link" type="button" aria-controls="dt_RecentTransactions" aria-disabled="true" aria-label="First" data-dt-idx="first" tabindex="-1"><i class="fi fi-rr-angle-double-left"></i></button></li>
+                                                                                            <li class="dt-paging-button page-item disabled"><button class="page-link previous" role="link" type="button" aria-controls="dt_RecentTransactions" aria-disabled="true" aria-label="Previous" data-dt-idx="previous" tabindex="-1"><i class="fi fi-rr-angle-left"></i></button></li>
+                                                                                            <li class="dt-paging-button page-item active"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" aria-current="page" data-dt-idx="0">1</button></li>
+                                                                                            <li class="dt-paging-button page-item disabled"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" data-dt-idx="1" disabled>2</button></li>
+                                                                                            <li class="dt-paging-button page-item disabled"><button class="page-link" role="link" type="button" aria-controls="dt_RecentTransactions" data-dt-idx="2" disabled>3</button></li>
+                                                                                            <li class="dt-paging-button page-item disabled"><button class="page-link next" role="link" type="button" aria-controls="dt_RecentTransactions" aria-label="Next" data-dt-idx="next" disabled><i class="fi fi-rr-angle-right"></i></button></li>
+                                                                                            <li class="dt-paging-button page-item disabled"><button class="page-link last" role="link" type="button" aria-controls="dt_RecentTransactions" aria-label="Last" data-dt-idx="last" disabled><i class="fi fi-rr-angle-double-right"></i></button></li>
+                                                                                        </ul>
+                                                                                    </nav>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div> -->
                             <div style="width: 100%; height: 0px;" class="dt-autosize"></div>
                         </div>
                     </div>
@@ -495,7 +497,7 @@
             },
             yaxis: {
                 min: 0,
-                max: 500,
+                max: 1000,
                 tickAmount: 5,
                 labels: {
                     formatter: function (value) {
@@ -584,34 +586,34 @@
                     ]
                 });
             });
-            // document.querySelector("#weekRevenueTab").addEventListener("click", () => {
-            //     chartTabsInit.updateOptions({
-            //         xaxis: {
-            //             categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-            //         },
-            //         series: [{
-            //                 data: [4200, 5200, 4800, 6100, 7000, 6400, 7200]
-            //             },
-            //             {
-            //                 data: [3100, 3700, 3400, 4000, 4600, 4200, 3900]
-            //             }
-            //         ]
-            //     });
-            // });
-            // document.querySelector("#monthRevenueTab").addEventListener("click", () => {
-            //     chartTabsInit.updateOptions({
-            //         xaxis: {
-            //             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            //         },
-            //         series: [{
-            //                 data: [3500, 5000, 4200, 5500, 5000, 6200, 4800, 6500, 5800, 7200, 6600, 7500]
-            //             },
-            //             {
-            //                 data: [2500, 3100, 2900, 3700, 3300, 4100, 3600, 3900, 4200, 4000, 4600, 4300]
-            //             }
-            //         ]
-            //     });
-            // });
+            document.querySelector("#weekRevenueTab").addEventListener("click", () => {
+                chartTabsInit.updateOptions({
+                    xaxis: {
+                        categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    },
+                    series: [{
+                        data: <?php echo json_encode($weekBuyCounts); ?>
+                    },
+                    {
+                        data: <?php echo json_encode($weekSellCounts); ?>
+                    }
+                    ]
+                });
+            });
+            document.querySelector("#monthRevenueTab").addEventListener("click", () => {
+                chartTabsInit.updateOptions({
+                    xaxis: {
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    series: [{
+                        data: <?php echo json_encode($monthBuyCounts); ?>
+                    },
+                    {
+                        data: <?php echo json_encode($monthSellCounts); ?>
+                    }
+                    ]
+                });
+            });
         }
 
 

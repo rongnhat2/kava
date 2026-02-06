@@ -32,6 +32,46 @@ class DisplayController extends Controller
     }
     public function statistic()
     {
+
+
+        // // Lấy 100 transaction mới nhất
+        // $transactions = DB::table('transaction')
+        //     ->orderBy('id', 'desc')
+        //     ->limit(100)
+        //     ->get();
+
+        // $transactions = $transactions->values(); // Đảm bảo có thể truy cập theo chỉ số
+
+        // for ($i = 0; $i < count($transactions); $i++) {
+        //     $current = $transactions[$i];
+        //     $shouldAdd = false;
+
+        //     // Kiểm tra row liền kề (trước và sau)
+        //     if ($i > 0 && $transactions[$i - 1]->id == $current->id) {
+        //         $shouldAdd = true;
+        //     }
+        //     if ($i < count($transactions) - 1 && $transactions[$i + 1]->id == $current->id) {
+        //         $shouldAdd = true;
+        //     }
+
+        //     // Nếu không có 2 row liền kề giống thì 50% ngẫu nhiên
+        //     if (!$shouldAdd) {
+        //         $shouldAdd = (rand(0, 1) === 1);
+        //     }
+
+        //     if ($shouldAdd) {
+        //         // Tạo số giây ngẫu nhiên từ 1 đến 60
+        //         $addSeconds = rand(1, 120);
+        //         // Cộng vào created_at
+        //         $newCreatedAt = \Carbon\Carbon::parse($current->created_at)->addSeconds($addSeconds);
+
+        //         // Update bản ghi
+        //         DB::table('transaction')
+        //             ->where('id', $current->id)
+        //             ->update(['created_at' => $newCreatedAt]);
+        //     }
+        // }
+        // dd(1);
         $profit_buy = DB::table('transaction')->where("type", "Swap USDT to KAVA")->sum('amount');
         $profit_sell = DB::table('transaction')->where("type", "Swap KAVA to USDT")->sum('amount');
         $transactions = DB::table('transaction')->where('type', 'like', '%swap%')->count();
@@ -125,6 +165,79 @@ class DisplayController extends Controller
         $buyCounts = $buySums;
         $sellCounts = $sellSums;
 
+
+
+        // --- Lấy dữ liệu cho week ---
+        // Tính toán tuần hiện tại (Thứ 2 -> Chủ nhật)
+        $weekStart = now()->startOfWeek(); // Monday 00:00:00
+        $weekEnd = now()->endOfWeek(); // Sunday 23:59:59
+
+        $weekDayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        $weekBuySums = array_fill(0, 7, 0);
+        $weekSellSums = array_fill(0, 7, 0);
+
+        // Lấy các transaction swap trong tuần
+        $weekTransactions = DB::table('transaction')
+            ->whereBetween('created_at', [$weekStart, $weekEnd])
+            ->where('type', 'like', '%swap%')
+            ->get();
+
+        foreach ($weekTransactions as $tx) {
+            $txTime = \Carbon\Carbon::parse($tx->created_at)->startOfDay();
+            $dow = $txTime->dayOfWeekIso; // Monday = 1, Sunday = 7
+            $idx = $dow - 1;
+            if ($tx->type === 'Swap USDT to KAVA') {
+                $weekBuySums[$idx] += $tx->amount;
+            }
+            if ($tx->type === 'Swap KAVA to USDT') {
+                $weekSellSums[$idx] += $tx->amount;
+            }
+        }
+        $weekBuyCounts = $weekBuySums;
+        $weekSellCounts = $weekSellSums;
+
+        // --- Lấy dữ liệu cho month ---
+
+        // Tạo mảng 12 tháng với mặc định là 0 nếu không có dữ liệu
+        $monthLabels = [];
+        $monthBuySums = [];
+        $monthSellSums = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $monthLabels[] = str_pad($i, 2, '0', STR_PAD_LEFT); // 01, 02, ..., 12
+            $monthBuySums[$i] = 0;
+            $monthSellSums[$i] = 0;
+        }
+
+        // Lấy các giao dịch swap của năm hiện tại
+        $yearStart = now()->startOfYear();
+        $yearEnd = now()->endOfYear();
+        $monthTransactions = DB::table('transaction')
+            ->whereBetween('created_at', [$yearStart, $yearEnd])
+            ->where('type', 'like', '%swap%')
+            ->get();
+
+        foreach ($monthTransactions as $tx) {
+            $txMonth = (int) date('n', strtotime($tx->created_at)); // 1..12
+            if ($tx->type === 'Swap USDT to KAVA') {
+                $monthBuySums[$txMonth] += $tx->amount;
+            }
+            if ($tx->type === 'Swap KAVA to USDT') {
+                $monthSellSums[$txMonth] += $tx->amount;
+            }
+        }
+
+        // Đảm bảo dữ liệu đúng thứ tự tháng và luôn có 12 phần tử, tháng không có thì giá trị là 0
+        $monthBuyCounts = [];
+        $monthSellCounts = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $monthBuyCounts[] = $monthBuySums[$i];
+            $monthSellCounts[] = $monthSellSums[$i];
+        }
+
+        // Truyền cho view
+        // Note: bạn có thể cần điều chỉnh bên view để nhận 
+        // weekBuyCounts, weekSellCounts, monthBuyCounts, monthSellCounts, weekDayLabels, monthLabels
+
         // Tính tổng buy và sell
         $totalBuy = array_sum($buyCounts);
         $totalSell = array_sum($sellCounts);
@@ -146,7 +259,7 @@ class DisplayController extends Controller
                 DB::raw('COUNT(*) as transactions_count'),
                 DB::raw('SUM(amount) as total_volume')
             )
-            ->whereBetween('created_at', [$todayStart, $todayEnd])
+            // ->whereBetween('created_at', [$todayStart, $todayEnd])
             ->where('type', 'like', '%swap%')
             ->groupBy('account_id')
             ->orderByDesc('transactions_count')
@@ -171,6 +284,10 @@ class DisplayController extends Controller
             'transaction_data',
             'buyCounts',
             'sellCounts',
+            'weekBuyCounts',
+            'weekSellCounts',
+            'monthBuyCounts',
+            'monthSellCounts',
             'percentBuy',
             'percentSell',
             'latestTransactions'
